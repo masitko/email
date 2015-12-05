@@ -1,0 +1,20 @@
+
+_hello:
+    path:        /hello/{name}
+    defaults:    { _controller: "controllers.hello:doGet"}
+
+_user:
+    path:        /user/{id}
+    defaults:    { _controller: "controllers.user:getUser"}
+    requirements:
+        id:  \d+
+        
+_get_gif:
+    path:        /g/{id}
+    defaults:    { _controller: "controllers.gif:getGif"}
+        
+_get_gif_64:
+    path:        /g64
+    defaults:    { _controller: "controllers.gif:getGif64"}
+        
+        

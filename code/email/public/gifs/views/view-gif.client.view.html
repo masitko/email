@@ -1,0 +1,14 @@
+<section data-ng-controller="GifsController" data-ng-init="findOne()">
+    <h1 data-ng-bind="gif.name"></h1>
+    <p data-ng-bind="gif.type"></p>
+    <div data-ng-show="authentication.user._id == gif.creator._id">
+        <a href="/#!/gifs/{{gif._id}}/edit">edit</a>
+        <a href="#" data-ng-click="delete();">delete</a>
+    </div>
+    <small>
+        <em>Posted on</em>
+        <em data-ng-bind="gif.created | date:'mediumDate'"></em>
+        <em>by</em>
+        <em data-ng-bind="gif.creator.fullName"></em>
+    </small>
+</section>

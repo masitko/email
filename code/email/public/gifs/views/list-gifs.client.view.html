@@ -1,0 +1,18 @@
+<section data-ng-controller="GifsController" data-ng-init="find()">
+    <h1>Gifs</h1>
+    <ul>
+        <li data-ng-repeat="gif in gifs">
+            <a data-ng-href="#!/gifs/{{gif._id}}" data-ng-bind="gif.name"></a>
+            <br>
+            <small data-ng-bind="gif.type"></small>
+            <br>
+            <small data-ng-bind="gif.created | date:'medium'"></small>
+            <small>/</small>
+            <small data-ng-bind="gif.creator.fullName"></small>
+            <!--<p data-ng-bind="gif.content"></p>-->
+        </li>
+    </ul>
+    <div data-ng-hide="!gifs || gifs.length">
+        No gifs yet, why don't you <a href="/#!/gifs/create">create one</a>?
+    </div>
+</section>

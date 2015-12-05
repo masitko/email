@@ -1,0 +1,97 @@
+<style>
+    .vert-center {
+        display:table-cell;
+        vertical-align:middle;
+        float:none;        
+    }
+</style>
+
+<div class="container">
+
+    <section class="jumbotron" data-ng-controller="GifsController"  data-ng-init="init()">
+        <h1>New Animated Gif</h1>
+        <form name="myform" data-ng-submit="submit()" class="form-horizontal">
+            <div class="well">
+                <div class="row">
+
+                    <div class="col-sm-3 col-lg-3 col-12">
+                        <label for="name">Name</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" data-ng-model="gif.name" id="name" placeholder="Please enter name" required>
+                        </div>
+                        <label for="type">Type</label>
+                        <div class="form-group">
+                            <select class="form-control" ng-change="changed()" data-ng-model="gif.type" id="type" placeholder="Type">
+                                <option value="counter">Counter</option>
+                                <option value="sentence">Sentence</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3 col-lg-3 col-12">
+                        <label for="repeat">Repeat</label>
+                        <div class="form-group">
+                            <input type="number" class="form-control" data-ng-model="gif.repeat" id="repeat" placeholder="Infinite loop if set to 0" required>
+                        </div>
+                        <label for="delay">Delay</label>
+                        <div class="form-group">
+                            <input type="number" class="form-control" data-ng-model="gif.delay" id="delay" placeholder="Delay between frames in ms" required>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3 col-lg-3 col-12">
+                        <label for="colour1">Primary colour</label>
+                        <div class="form-group">
+                            <div class="minicolors minicolors-theme-bootstrap minicolors-position-bottom minicolors-position-left">
+                                <input minicolors="colorOptions" class="form-control" type="text" data-ng-model="gif.colour1" id="colour1" placeholder="Please choose primary colour" required>
+                            </div>
+                        </div>
+                        <label for="backgroundColour">Background colour</label>
+                        <div class="form-group">
+                            <div class="minicolors minicolors-theme-bootstrap minicolors-position-bottom minicolors-position-left">
+                                <input minicolors="colorOptions" class="form-control" type="text" data-ng-model="gif.backgroundColour" id="backgroundColour" placeholder="Please choose background colour" required>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="well" data-ng-show="gif.type === 'counter'">
+                <div class="row">
+                    <div class="col-sm-3 col-lg-3 col-12">
+                        <label for="frames">Frames</label>
+                        <div class="form-group">
+                            <input type="number" class="form-control" data-ng-model="gif.options.frames" id="frames" placeholder="Amount of frames" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-lg-3 col-12">
+                        <label for="timer-date">Timer end:</label>
+                        <div class="form-group">
+                            <input class="form-control" ng-model="dateEnd" ng-change="changed()" id="timer-date" type="text" ng-click="opened = true" datepicker-popup="dd-MMMM-yyyy" is-open="opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-lg-3 col-12">
+                        <div class="form-group">
+                            <timepicker ng-model="timeEnd" ng-change="changed()" hour-step="1" minute-step="5" show-meridian="false"></timepicker>
+                        </div>
+                    </div>
+                </div>        
+
+            </div>
+            <div>
+                <input type="submit" class="btn btn-primary" value="Create">
+            </div>
+            <div data-ng-show="error">
+                <strong data-ng-bind="error"></strong>
+            </div>
+        </form>
+        <hr>
+        <div class="well">
+                <div class="row">
+                    <img ng-src="data:image/gif;base64,{{image}}" id="photo-id"/>
+                </div>
+        </div>
+
+    </section>
+</div>

@@ -2,7 +2,7 @@
 .vagrant
 node_modules
 
-code/public/lib/
+code/email/public/lib/
 code/gif/vendor/
 
 /nbproject/private/

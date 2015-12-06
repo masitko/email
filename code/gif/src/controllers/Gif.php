@@ -30,7 +30,7 @@ class Gif {
             return $this->errorResponse("Cannot retrieve gif info.");
         }
 
-//        var_dump($this->gif['options']['timerEnd']);
+//        var_dump($this->gif['options']);
 //        die();
         switch( $this->gif['type'] ) {
             case self::TYPE_COUNTER:
